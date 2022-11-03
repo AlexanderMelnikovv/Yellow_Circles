@@ -3,14 +3,13 @@ from PyQt5.QtCore import QPoint
 from PyQt5.QtGui import QPainter, QColor
 import sys
 from random import randint
-from UI import Ui_Form
+from PyQt5 import uic
 
 
-
-class Main_Window(QWidget, Ui_Form):
+class Main_Window(QWidget):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
+        uic.loadUi('UI.ui', self)
 
         self.draw_btn.clicked.connect(self.run)
 
@@ -29,7 +28,6 @@ class Main_Window(QWidget, Ui_Form):
         radius2 = randint(1, 200)
         qp.drawEllipse(QPoint(250, 300), radius, radius)
         qp.drawEllipse(QPoint(650, 300), radius2, radius2)
-
 
 
 if __name__ == '__main__':
